@@ -4,6 +4,7 @@ import java.util.*;
 
 class Clear
 {
+
 	void clc()
 	{
 		try
@@ -19,15 +20,14 @@ class Clear
 class Print
 {
 	Clear c = new Clear();
-	LinkedList<String> a = new LinkedList<String>();
-	LinkedList<String> b = new LinkedList<String>();
+	static LinkedList<String>a = new LinkedList<String>();//title
+	static LinkedList<String>b= new LinkedList<String>();//discription
 	
 	Scanner scan = new Scanner(System.in);
 	
 	int search()
 	{
-		LinkedList<String> ac = new LinkedList<String>(a);
-		LinkedList<String> bc = new LinkedList<String>(b);
+		
 		c.clc();
 		String TC;
 		String DC;
@@ -37,12 +37,10 @@ class Print
 		int g=0;
 		try
 		{
-
-
-			for(int j=-1;j<=ac.size()+1;j++)
+			for(int j=0;j<a.size();j++)
 			{
-			TC=ac.pop();
-			DC=bc.pop();
+			TC=a.get(j);
+			DC=b.get(j);
 			if (TC.contains(ct))
 			{
 				g++;
@@ -51,64 +49,35 @@ class Print
 				System.out.println(DC+"\n");
 			}
 			}
-			try
-			{
-			TC=ac.getFirst();
-			DC=bc.getFirst();
-			if (TC.contains(ct))
-			{
-				g++;
-				System.out.println("POST FOUND");
-				System.out.println(TC);
-				System.out.println(DC+"\n");
-			}
-			}
-			catch (NoSuchElementException e)
-			{
-			}
-			
 		}
-		catch (NoSuchElementException e)
+		catch (Exception e)
 		{
-
 		}
-		
 		return g;
-	}
-	int display()
-	{
+		}
+
+	     int display()
+		{
 		
-	
-		LinkedList<String> ac = new LinkedList<String>(a);
-		LinkedList<String> bc = new LinkedList<String>(b);
 		c.clc();
 		int q = a.size();
 			try
 			{
-				for (int i=-1;i<=ac.size()+1;i++)
+				for (int i=0;i<(a.size());i++)
 				{
-					System.out.println(ac.pop());
-					System.out.println(bc.pop());
+					System.out.println(a.get(i));
+					System.out.println(b.get(i));
 					System.out.println("\n"+"\n");
-				}
-
-				try
-				{
-					System.out.println(ac.getFirst());
-					System.out.println(bc.getFirst());
-					System.out.println("\n"+"\n");
-				}
-				catch (NoSuchElementException e)
-				{
 				}
 			}
-			catch (NoSuchElementException e)
+			catch (Exception e)
 			{
 			}
-	return q;
-	}
-	void post()
-	{
+			return q;
+		}
+
+	     void post()
+		{
 		System.out.println("TITLE :-");
 		String t = scan.nextLine();
 		a.add(t.toUpperCase());
@@ -117,7 +86,7 @@ class Print
 		b.add(d);
 		c.clc();
 		System.out.println("SUCCESSFULLY POSTED "+"\n");
-	}
+		}
 }
 class Application
 {
@@ -130,7 +99,7 @@ class Application
 		int i=0;
 		do
 		{	
-			System.out.println("1.SEARCH POST"+"\n"+"2.PUBLISHED"+"\n"+"3.NEW POST"+"\n"+"4.EXIT");
+			System.out.println("1.SEARCH POST"+"\n"+"2.VIEW PUBLISHED"+"\n"+"3.NEW POST"+"\n"+"4.EXIT");
 			i=scan.nextInt();
 			if(i==1) 
 			{
@@ -159,10 +128,10 @@ class Application
 
 			}
 
-			if(i!=4&&(i!=1&&i!=2&&i!=3))
+			if(i!=4&&i!=3&&i!=2&&i!=1)
 			{
 				c.clc();
-				System.out.println("invalid key"+"\n");
+				System.out.println("invalid key  "+i+"\n");
 			}
 		}while(i!=4);
 
